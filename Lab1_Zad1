@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PWSW_Lab1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Podaj liczbę");
+            String ciag = Console.ReadLine();
+            int liczba;
+            try
+            {
+                liczba = int.Parse(ciag);
+                int unikalne = 0;
+                ciag = ciag.Replace("-", "");
+                for (int i = 0; i < ciag.Length; i++)
+                {
+                    int licznik = 0;
+                    for (int j = 0; j < ciag.Length; j++)
+                    {
+                        if (i != j)
+                        {
+                            if (ciag[i].Equals(ciag[j]))
+                            {
+                                licznik++;
+                            }
+                        }
+                    }
+                    if (licznik ==0)
+                    {
+                        unikalne++;
+                    }
+                }
+                Console.WriteLine("Unikalne: " + unikalne);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Nie podałeś liczby!!!");
+            }
+
+            Console.ReadKey();
+        }
+    }
+}
