@@ -34,10 +34,6 @@ namespace Zad2
                         if (str[i].Equals('1'))
                         {
                             czyPocz = true;
-                            if (i < str.Length - 1)
-                            {
-                                i++;
-                            }
                         }
                     }
                     else
