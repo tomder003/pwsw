@@ -35,7 +35,6 @@ namespace zad1_popr
 
                 for (int i = 0; i < listaLiczb.Count; i++)
                 {
-                    int liczba = listaLiczb[i];
                     bool unikalna = true;
                     for (int j = 0; j < listaLiczb.Count; j++)
                     {
