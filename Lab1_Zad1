@@ -4,43 +4,58 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PWSW_Lab1
+namespace zad1_popr
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Podaj liczbę");
-            String ciag = Console.ReadLine();
-            int liczba;
+            Console.WriteLine("Podaj liczby (oddzielone przecinkiem)");
+            string liczby = Console.ReadLine();
+            liczby = liczby + " ";
+            List<int> listaLiczb = new List<int>();
+            string liczbaS = "";
             try
             {
-                liczba = int.Parse(ciag);
-                int unikalne = 0;
-                ciag = ciag.Replace("-", "");
-                for (int i = 0; i < ciag.Length; i++)
+                for (int i = 0; i < liczby.Length; i++)
                 {
-                    int licznik = 0;
-                    for (int j = 0; j < ciag.Length; j++)
+                    if (liczby[i] != ',' && i + 1 < liczby.Length)
+                    {
+                        liczbaS = liczbaS + liczby[i];
+                    }
+                    else
+                    {
+                        int liczba = int.Parse(liczbaS);
+                        listaLiczb.Add(liczba);
+                        liczbaS = "";
+                    }
+                }
+
+                Console.WriteLine("Unikalne: ");
+
+                for (int i = 0; i < listaLiczb.Count; i++)
+                {
+                    int liczba = listaLiczb[i];
+                    bool unikalna = true;
+                    for (int j = 0; j < listaLiczb.Count; j++)
                     {
                         if (i != j)
                         {
-                            if (ciag[i].Equals(ciag[j]))
+                            if (listaLiczb[i] == listaLiczb[j])
                             {
-                                licznik++;
+                                unikalna = false;
                             }
                         }
                     }
-                    if (licznik ==0)
+                    if (unikalna)
                     {
-                        unikalne++;
+                        Console.WriteLine(listaLiczb[i]);
                     }
                 }
-                Console.WriteLine("Unikalne: " + unikalne);
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
-                Console.WriteLine("Nie podałeś liczby!!!");
+                Console.WriteLine("Podano niepoprawne dane!");
             }
 
             Console.ReadKey();
